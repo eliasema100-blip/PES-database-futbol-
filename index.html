@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Base de Datos de Fútbol</title>
 
     <style>
@@ -12,21 +13,21 @@
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f1f3f5;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef1f4;
             color: #222;
         }
 
         header {
-            background: #111827;
+            background: #101820;
             color: white;
-            padding: 20px;
+            padding: 25px 15px;
             text-align: center;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 30px;
         }
 
         header p {
@@ -42,10 +43,10 @@
 
         .buscador {
             background: white;
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .buscador input {
@@ -58,67 +59,125 @@
 
         .jugador {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 14px;
+            padding: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+        }
+
+        .club {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
         }
 
         .jugador h2 {
-            margin-top: 0;
-            color: #111827;
+            margin: 0;
+            font-size: 30px;
         }
 
-        .dato {
-            margin: 8px 0;
-        }
-
-        .dato strong {
-            display: inline-block;
-            width: 150px;
+        .camiseta {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #555;
         }
 
         .posicion {
             display: inline-block;
-            background: #e5e7eb;
-            padding: 5px 10px;
-            border-radius: 6px;
+            margin-top: 15px;
+            background: #101820;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 7px;
             font-weight: bold;
         }
 
-      h3 {
-    margin-top: 25px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
-}
+        .datos {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
 
-.habilidades {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
+        .dato {
+            background: #f4f5f6;
+            padding: 12px;
+            border-radius: 8px;
+        }
 
-.habilidad {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f3f4f6;
-    padding: 12px 15px;
-    border-radius: 8px;
-    border-left: 5px solid #111827;
-}
-
-.habilidad span {
-    font-weight: bold;
-}
-
-.habilidad strong {
-    font-size: 20px;
-}  footer {
-            text-align: center;
-            padding: 25px;
+        .dato strong {
+            display: block;
             color: #666;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        h3 {
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .habilidades {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .habilidad {
+            background: #f4f5f6;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .habilidad-cabecera {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .habilidad-cabecera span {
+            font-weight: bold;
+        }
+
+        .habilidad-cabecera strong {
+            font-size: 18px;
+        }
+
+        .barra {
+            width: 100%;
+            height: 9px;
+            background: #d8dce1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .nivel {
+            height: 100%;
+            background: #111827;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .datos,
+            .habilidades {
+                grid-template-columns: 1fr;
+            }
+
+            .jugador h2 {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
@@ -127,7 +186,7 @@
 
 <header>
     <h1>Base de Datos de Fútbol</h1>
-    <p>Información de jugadores y equipos</p>
+    <p>Jugadores, equipos y estadísticas</p>
 </header>
 
 <div class="contenedor">
@@ -144,139 +203,191 @@
     <div id="listaJugadores">
 
         <div class="jugador">
-            <h2>Erling Haaland</h2>
 
-            <div class="dato">
-                <strong>Club:</strong>
+            <div class="club">
                 Manchester City FC
             </div>
 
-            <div class="dato">
-                <strong>Nombre:</strong>
-                Erling Haaland
+            <h2>Erling Haaland</h2>
+
+            <div class="camiseta">
+                Nombre de camiseta: HAALAND
+                · Número: 9
             </div>
 
-            <div class="dato">
-                <strong>Nombre de camiseta:</strong>
-                HAALAND
+            <div class="posicion">
+                DC ★
             </div>
 
-            <div class="dato">
-                <strong>Número:</strong>
-                9
+            <div class="datos">
+
+                <div class="dato">
+                    <strong>Nacionalidad</strong>
+                    Noruega 🇳🇴
+                </div>
+
+                <div class="dato">
+                    <strong>Edad</strong>
+                    26 años
+                </div>
+
+                <div class="dato">
+                    <strong>Fecha de nacimiento</strong>
+                    21/07/2000
+                </div>
+
+                <div class="dato">
+                    <strong>Altura</strong>
+                    195 cm
+                </div>
+
+                <div class="dato">
+                    <strong>Peso</strong>
+                    94 kg
+                </div>
+
             </div>
 
-            <div class="dato">
-                <strong>Posición:</strong>
-                <span class="posicion">CD ★</span>
+            <h3>Habilidades</h3>
+
+            <div class="habilidades">
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Ataque</span>
+                        <strong>95</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:95%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Control de balón</span>
+                        <strong>86</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:86%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Regate</span>
+                        <strong>82</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:82%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Pase</span>
+                        <strong>75</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:75%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Definición</span>
+                        <strong>96</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:96%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Cabeceo</span>
+                        <strong>93</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:93%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Velocidad</span>
+                        <strong>89</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:89%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Aceleración</span>
+                        <strong>86</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:86%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Fuerza física</span>
+                        <strong>97</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:97%"></div>
+                    </div>
+                </div>
+
+                <div class="habilidad">
+                    <div class="habilidad-cabecera">
+                        <span>Resistencia</span>
+                        <strong>80</strong>
+                    </div>
+                    <div class="barra">
+                        <div class="nivel" style="width:80%"></div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="dato">
-                <strong>Nacionalidad:</strong>
-                Noruega
-            </div>
-
-            <div class="dato">
-                <strong>Edad:</strong>
-                26 años
-            </div>
-
-            <div class="dato">
-                <strong>Fecha de nacimiento:</strong>
-                21/07/2000
-            </div>
-
-            <div class="dato">
-                <strong>Altura:</strong>
-                195 cm
-            </div>
-
-            <div class="dato">
-                <strong>Peso:</strong>
-                94 kg
-            </div><h3>Habilidades</h3>
-
-<div class="habilidades">
-
-    <div class="habilidad">
-        <span>Ataque</span>
-        <strong>95</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Control de balón</span>
-        <strong>86</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Regate</span>
-        <strong>82</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Pase</span>
-        <strong>75</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Definición</span>
-        <strong>96</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Cabeceo</span>
-        <strong>93</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Velocidad</span>
-        <strong>89</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Aceleración</span>
-        <strong>86</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Fuerza física</span>
-        <strong>97</strong>
-    </div>
-
-    <div class="habilidad">
-        <span>Resistencia</span>
-        <strong>80</strong>
-    </div>
-
-</div>
         </div>
 
     </div>
+
 </div>
 
 <footer>
-    Base de Datos de Fútbol
+    Base de Datos de Fútbol © 2026
 </footer>
 
 <script>
-    function buscarJugador() {
-        let texto = document
-            .getElementById("buscador")
-            .value
-            .toLowerCase();
 
-        let jugadores = document.querySelectorAll(".jugador");
+function buscarJugador() {
 
-        jugadores.forEach(function(jugador) {
-            let contenido = jugador.textContent.toLowerCase();
+    let texto = document
+        .getElementById("buscador")
+        .value
+        .toLowerCase();
 
-            if (contenido.includes(texto)) {
-                jugador.style.display = "block";
-            } else {
-                jugador.style.display = "none";
-            }
-        });
-    }
+    let jugadores = document.querySelectorAll(".jugador");
+
+    jugadores.forEach(function(jugador) {
+
+        let contenido = jugador.textContent.toLowerCase();
+
+        if (contenido.includes(texto)) {
+            jugador.style.display = "block";
+        } else {
+            jugador.style.display = "none";
+        }
+
+    });
+}
+
 </script>
 
 </body>
